@@ -1,0 +1,48 @@
+banuserid = 
+
+apikey = os.getenv('apikey')
+token = os.getenv('token')
+idlist = os.getenv('idlist')
+bottoken = os.getenv('bottoken')
+webhook = os.getenv('webhook')
+
+def sendlog(msg):
+    json = {
+        "content": msg,
+        "embeds": None,
+        "attachments": []
+    }
+    requests.post(webhook, json=json)
+
+url = "https://api.trello.com/1/cards"
+
+headers = {
+    "Accept": "application/json"
+}
+
+query = {
+    'idList': idlist,
+    'key': apikey,
+    'token': token
+}
+
+response = requests.request(
+    "POST",
+    url,
+    headers=headers,
+    params=query
+)
+
+a = response.json()
+this = a['shortLink']
+
+
+url = f"https://api.trello.com/1/cards/{this}"
+query = {'key': apikey, 'token': token}
+payload = {'name': banuserid}
+response = requests.request("PUT", url, params=query, data=payload)
+
+
+sendlog(f'Banned id: 4167317170 with key `{this}` ')
+print(f'Banned id: 4167317170 with key `{this}` ')
+await ctx.message.add_reaction('\N{WHITE HEAVY CHECK MARK}')
