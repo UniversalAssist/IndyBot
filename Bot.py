@@ -62,7 +62,7 @@ def getuser(userid):
 
 
 @bot.command()
-@commands.has_role(1066853298344317027)
+@commands.has_role(1082432929717821493)
 async def ban(ctx, user,*, reason=None):
 
     if reason == None:
@@ -85,8 +85,9 @@ async def ban(ctx, user,*, reason=None):
     reason=msg.content
 
 
-    if user in ['SellingBrain', '482716017', 'Justbro12349', '1654455231', 'TwinTonkas', '162863938', 'Neocropolis', '339443329', 'Feuions', '1884956279', 'DeoTheFool', '3363921467', 'DaeHoodHolder', '4159369178']:
-      return await ctx.send('User is apart of Mod Team. You cannot ban this player.')
+    if user in ['DeoTheFool', '3363921467', 'v350z', '2899828398', 'jaorbw', '3493181025', 'Neocropolis', '339443329',
+'StringedEncryption', '3550862473', 'AvoidJaysonz', '3290769146']:
+      return await ctx.send('Selected [USER] Could not be banned due to being apart of the Moderation team.')
 
     if user.isnumeric():
       opuser = getuser(user)
@@ -135,12 +136,12 @@ async def ban(ctx, user,*, reason=None):
 
     print(f'Banned id: `{user}` with key `{this}` , {reason}')
     try:
-      embed = discord.Embed(title=f'**Dae Hood Moderation**', description=f'BANNED By ({ctx.author}): \n\nUSER ID: `{plrusernamefunc}`\n\nBan Reason: **{reason}**\n\nUnban key: **__{this}__**', color=discord.Color.red())
-      chan = await bot.fetch_channel(1066848013647085619)
+      embed = discord.Embed(title=f'**Hood Revised Moderation**', description=f'BANNED By ({ctx.author}): \n\nUSER ID: `{plrusernamefunc}`\n\nBan Reason: **{reason}**\n\nUnban key: **__{this}__**', color=discord.Color.red())
+      chan = await bot.fetch_channel(1082432951737913424)
       await chan.send(embed=embed)
     except:
       embed = discord.Embed(title=f'**Dae Hood Moderation**', description=f'BANNED By ({ctx.author}): \n\nUSER ID: `{user}`\n\nBan Reason: **{reason}**\n\nUnban key: **__{this}__**', color=discord.Color.red())
-      chan = await bot.fetch_channel(1066848013647085619)
+      chan = await bot.fetch_channel(1082432951737913424)
       await chan.send(embed=embed)
       
     await ctx.message.add_reaction('')
@@ -150,7 +151,7 @@ async def ban(ctx, user,*, reason=None):
 
 
 @bot.command()
-@commands.has_role(1066853298344317027)
+@commands.has_role(1082432929717821493)
 async def unban(ctx, trelloident,*, reason=None):
   if reason==None:
     if trelloident.isnumeric():
@@ -181,7 +182,7 @@ async def unban(ctx, trelloident,*, reason=None):
     params=query
   )
   
-  chan = await bot.fetch_channel(1066815361980317727)
+  chan = await bot.fetch_channel(1082432950542536714)
   #await chan.send(f'`Unbanned key `{trelloident}` for reason: `{reason}`')
   await ctx.send(f'```\nUN-BANNED ({ctx.author}): {trelloident} | reason: {reason}```')
 
